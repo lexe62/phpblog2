@@ -1,0 +1,39 @@
+<!-- fichier : article.phtml 				-->
+<!-- chemin : maquette/templates/index.php  -->
+<!-- auteur : Sinnaeve Alexis 			    -->
+
+
+<!-- Titre   -->
+<h2>{$h2}</h2>
+
+
+<!-- foreach pour recuperer les articles  -->
+{foreach from=$articles item=article}
+	<article>
+		<h3>{$article.titre|escape:"html"}</h3>
+		<p>
+			{$article.texte|escape:"html"}
+			<br>
+			<br>
+		
+			<br>
+			date
+			{$article.date|date_format:'\L\e d/m/Y  \à H:i:s'}
+			<img src = "fichiers/{$article['id']}.jpg"/>
+		</p>
+	</article>
+	
+<a href="article.php?id={$article.id|escape:'html'}" class="btn btn-primary">Modifier</a>
+<a href="supprimer_article.php?id={$article.id|escape:'html'}" class="btn btn-danger">Supprimer</a>
+{/foreach}
+
+<div class="pagination pagination-centered">
+	<ul>
+		<li class="prev {if $page<=1} disabled {/if}"><a href="?p={if $page<=1} #null {else} {$page-1} {$pager} {/if} ">&larr; Précédent</a></li>
+			{for $i=1 to $nbpages}
+				<li {if $page==$i} class='active' {/if}>
+				<a href='?p={$i} {$pager} '>{$i} </a></li>
+			{/for}
+		<li class="next {if $page>=$nbpages} disabled {/if}"><a href="?p={if $page>=$nbpages} {$page} {else} {$page+1} {$pager} {/if}">Suivant&rarr; </a></li>
+    </ul>
+</div>
