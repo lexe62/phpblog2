@@ -15,11 +15,11 @@
 			{$article.texte|escape:"html"}
 			<br>
 			<br>
-		
+			<img src = "fichiers/{$article['id']}.jpg"/>
 			<br>
 			date
 			{$article.date|date_format:'\L\e d/m/Y  \à H:i:s'}
-			<img src = "fichiers/{$article['id']}.jpg"/>
+			
 		</p>
 	</article>
 	

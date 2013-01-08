@@ -7,7 +7,7 @@
 
 include('includes/fonctions.inc.php');// inclusion des fonctions php crée
 include('includes/connexion.inc.php');// on inclut le fichier de connexion à la base de données
-require("smarty/smarty.class.php"); // On inclut la classe Smarty
+require("smarty/Smarty.class.php"); // On inclut la classe Smarty
 
 $smarty = new Smarty();
 

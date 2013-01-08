@@ -8,7 +8,7 @@
 
 	include('includes/connexion.inc.php'); // on inclut le fichier de connexion à la base de données
 	include('includes/fonctions.inc.php'); // inclusion des fonctions php crée
-	require("smarty/smarty.class.php"); // On inclut la classe Smarty
+	require("smarty/Smarty.class.php"); // On inclut la classe Smarty
 	
 	$smarty = new Smarty();
 
@@ -57,30 +57,24 @@
 					requete_notif("INSERT INTO articles (titre, texte, date) VALUES ('$titre','$texte',$date)",'article','ajouté'); //fonction ajoute dans la bdd
 			
 		
-					If (isset($_FILES['image']))
-					{
-						//vérification de l'image
-						if ($_FILES['image']['error']!=0)  //vérification
-							$_SESSION['image']='error';
-						if ($_FILES['image']['type']!='image/jpeg') // verification du type d'image
-							$_SESSION['image']='type';
-						if ($_FILES['image']['size']>500*1024) // vérification de la taille d'image
-							$_SESSION['image']='size';
-					}
-					else 
-					{
+				
+			
 						//bloc qui permet d'upload une image
 						$id = mysql_insert_id();
-						$dossier = 'fichiers/';
-						$_FILES['image']['name'] = $id.".jpg";
-						$fichier = basename($_FILES['image']['name']);
-						move_uploaded_file($_FILES['image']['tmp_name'], $dossier.$fichier);
+						
+						$nom = $_FILES["image"]["tmp_name"];
+						//$dossier = "fichiers/".$_FILES["image"]["name"]."";	
+							
+						//$_FILES['image']['name'] = $id.".jpg";
+						//$fichier = basename($_FILES['image']['name']);
+						$fichier = "fichiers/".$id.".jpg";	
+						move_uploaded_file($nom,$fichier);
 		
 						//redirection
 						header('Location:index.php'); 
 						exit();
 
-					}
+					
 				}
 			}
 		}

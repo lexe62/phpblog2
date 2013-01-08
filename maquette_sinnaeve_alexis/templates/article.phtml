@@ -5,7 +5,7 @@
 
 <!-- Les différents formulaires -->
 
-<form action="article.php" method="post">
+<form action="article.php" method="post" enctype="multipart/form-data">
 	<h2>{$action_label} un article</h2>
 	
 	
@@ -38,7 +38,7 @@
 	
 	
 		<!-- test -->
-	<form action="article.phtml" method="post" enctype="multipart/form-data" name="upload">
+	
 		<div class="input"><input type='hidden' name='upload' value='1'></div>
 		<div class="clearfix">
 			<input type="file" name="image" id="image">
